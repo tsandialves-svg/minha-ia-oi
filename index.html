@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Pro — Seu assistente de inteligência artificial</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="logo">IA<span>Pro</span></div>
+  <div id="area-usuario"></div>
+</header>
+
+<!-- TELA DE LOGIN / CADASTRO -->
+<section id="tela-auth" class="container-auth">
+  <div class="card-auth">
+    <div class="abas">
+      <button class="aba ativa" data-aba="login">Entrar</button>
+      <button class="aba" data-aba="cadastro">Criar conta</button>
+    </div>
+
+    <form id="form-login" class="formulario">
+      <input type="email" id="login-email" placeholder="Seu email" required>
+      <input type="password" id="login-senha" placeholder="Sua senha" required>
+      <button type="submit">Entrar</button>
+      <p class="erro" id="login-erro"></p>
+    </form>
+
+    <form id="form-cadastro" class="formulario escondido">
+      <input type="text" id="cad-nome" placeholder="Seu nome" required>
+      <input type="email" id="cad-email" placeholder="Seu email" required>
+      <input type="password" id="cad-senha" placeholder="Crie uma senha (mín. 6 caracteres)" required>
+      <button type="submit">Criar conta gratuita</button>
+      <p class="erro" id="cadastro-erro"></p>
+    </form>
+  </div>
+</section>
+
+<!-- APP PRINCIPAL (só aparece logado) -->
+<main id="app-principal" class="escondido">
+
+  <nav class="menu-app">
+    <button class="menu-item ativo" data-tela="chat">💬 Chat</button>
+    <button class="menu-item" data-tela="planos">⭐ Planos</button>
+  </nav>
+
+  <section id="tela-chat" class="tela">
+    <div id="janela-chat" class="janela-chat"></div>
+    <div class="aviso-limite escondido" id="aviso-limite">
+      Você atingiu o limite gratuito de hoje. <a href="#" onclick="mostrarTela('planos')">Assine o Pro</a> para uso ilimitado.
+    </div>
+    <form id="form-chat" class="form-chat">
+      <input type="text" id="input-mensagem" placeholder="Digite sua mensagem..." autocomplete="off" required>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <section id="tela-planos" class="tela escondido">
+    <h2>Escolha seu plano</h2>
+    <p class="subtitulo-planos">Uso ilimitado, respostas mais rápidas e prioridade no suporte.</p>
+
+    <div class="planos-grid">
+      <div class="plano-card">
+        <h3>Gratuito</h3>
+        <p class="preco">R$ 0<span>/sempre</span></p>
+        <ul>
+          <li>10 mensagens por dia</li>
+          <li>Acesso ao chat básico</li>
+        </ul>
+        <button disabled class="btn-plano-atual">Seu plano atual</button>
+      </div>
+
+      <div class="plano-card destaque">
+        <span class="tag">Mais popular</span>
+        <h3>Pro Mensal</h3>
+        <p class="preco">R$ 100<span>/mês</span></p>
+        <ul>
+          <li>Mensagens ilimitadas</li>
+          <li>Prioridade nas respostas</li>
+          <li>Suporte prioritário</li>
+        </ul>
+        <button onclick="assinar('mensal')">Assinar mensal</button>
+      </div>
+
+      <div class="plano-card">
+        <h3>Pro Anual</h3>
+        <p class="preco">R$ 1000<span>/ano</span></p>
+        <p class="economia">Economize R$ 200 por ano</p>
+        <ul>
+          <li>Mensagens ilimitadas</li>
+          <li>Prioridade nas respostas</li>
+          <li>Suporte prioritário</li>
+        </ul>
+        <button onclick="assinar('anual')">Assinar anual</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
